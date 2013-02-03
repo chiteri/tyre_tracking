@@ -50,6 +50,7 @@ class Tyre(models.Model):
         return u'Tyre number %s [ %s ]'%(self.serial_number, self.make)
  
 class Transfer(models.Model): 
+    # agent = models.ForeignKey(User, help_text = "The person who effected the transfer")
     transfer_date = models.DateField(help_text="Date transfer was effected") 
     tyre =  models.ForeignKey(Tyre, help_text="Tyre transferred") 
     vehicle_from = models.ForeignKey("Vehicle", related_name="transfer_from", null=True, blank=True) 

@@ -1,10 +1,14 @@
 from django.conf.urls import patterns, include, url
+from tyre_tracking.views import hello, current_datetime, hours_ahead 
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^hello/$', hello), 
+    url(r'^time/$', current_datetime), 
+    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
     # Examples:
     # url(r'^$', 'tyre_tracking.views.home', name='home'),
     # url(r'^tyre_tracking/', include('tyre_tracking.foo.urls')),
@@ -13,5 +17,5 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )

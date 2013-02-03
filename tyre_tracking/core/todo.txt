@@ -1,0 +1,13 @@
+1) Change make to supplier and supplier to make, 
+2) Registration field for vehicle is not long enough (add two chars), 
+3) Expected life duration to change to hold both mileage and duration (months), 
+4) The expected life is different for when the vehicle is new and when it has been retreaded 
+
+===== 
+Add a model for transfers 
+
+(date, tyre, vehicle from, vehicle_to, new_position, tyre_state ) 
+
+-- Take note that you can take a tyre to repair without transfering it to another car 
+// So allow nulls for both vehicle to and new position 
+

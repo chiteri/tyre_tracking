@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from tyre_tracking.views import hello, current_datetime, hours_ahead 
+from tyre_tracking.views import hello, current_datetime, hours_ahead, display_meta 
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^hello/$', hello), 
     url(r'^time/$', current_datetime), 
     url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^meta/$', display_meta),
     # Examples:
     # url(r'^$', 'tyre_tracking.views.home', name='home'),
     # url(r'^tyre_tracking/', include('tyre_tracking.foo.urls')),

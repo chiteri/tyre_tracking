@@ -29,7 +29,7 @@
                     <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.png">
   <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/menu_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/change_sink.js"></script><meta name="document_iterator.js"><meta name="find_proxy.js"><meta name="get_html_text.js"><meta name="global_constants.js"><meta name="number_injection_builder.js"><meta name="name_injection_builder.js"><meta name="menu_injection_builder.js"><meta name="string_finder.js"><meta name="change_sink.js"></head>
-
+   {% block meta_head %} {% endblock %}
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -43,35 +43,42 @@
           <a class="brand" href="#">Tyre tracking</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="portfolio.html">Portfolio</a></li>
-              <li><a href="products.html">Products</a></li>
-			  <li><a href="about.html">About</a></li>
+              <li class="active"><a href="#">Home</a></li> 
+			  {% block nav_bar %}
+              <!-- <li><a href="/transfer/">Transfers</a></li>
+              <li><a href="/history/">History</a></li>
+			  <li><a href="/report/">Reports</a></li> --> 
+			  {% endblock %}
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
-                <ul class="dropdown-menu"">
-                  <li><a href="layout.html">Layout</a></li>
-                  <li><a href="portfolio.html">Portfolio</a></li>
-                  <li><a href="products.html">Products</a></li>
+                <ul class="dropdown-menu">   
+					{% block account_options %}
+                  <!-- <li><a href="/accounts/profile/edit/">Preferrences</a></li>				  
+                  <li><a href="/accounts/password/reset/">Reset password</a></li>
+				  <li><a href="/accounts/logout/">Logout</a></li>
                   <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li class="nav-header">Nav header</li> --> 
+                  <li><a href="/accounts/register/">Sign Up</a></li>
+                  <li><a href="/accounts/password/request/">Forgot password?</a></li>
+				    {% endblock %} 
                 </ul>
               </li>
             </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
+			{% block identify_user %}
+            <form class="navbar-form pull-right" method=post name="s_login" action="/accounts/login/">{% csrf_token %}
+              <input class="span2" type="text" placeholder="Username" name="username" id="username"value="" maxlength="50" size="30" tabindex="1">
+              <input class="span2" type="password" placeholder="Password" name="password" id="password" maxlength="50" size="15" tabindex="2">
               <button type="submit" class="btn">Sign in</button>
-            </form>
+			  <input type="hidden" name="next" value="{{ next|escape }}" />
+            </form> 
+			{% endblock %} 
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
     <div class="container">
-
+		{% block main_content %}
       <!-- Main hero unit for a primary marketing message or call to action -->
 	  <div class="carousel slide" id="home-carousel"> 	  
 		<div class="carousel-inner"> 
@@ -94,19 +101,20 @@
 		
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span4">
-          <h2>Tracking Tyre History</h2>
-          <p>The system has an option of writing off any burst tyres but never losing its history. You are able to generate an  
-			accurate report on all burst tyres at any given time. Additionally, all tyres purchased within a given duration is 
-			shown giving all the details of the wheel (serial number, make, truck fitted, etc)</p>
-          <p><a class="btn" href="#">View details »</a></p>
-        </div>
-        <div class="span4">
+	  <div class="span4">
           <h2>Tyre transfers</h2>
           <p>This system allows you to transfer tyres from one axel to the other e.g from the front to the trailer or from one 
 			trailer axel to another. You can also move it from one truck to any other truck without losing its history. </p>
           <p><a class="btn" href="#">View details »</a></p>
        </div>
+        <div class="span4">
+          <h2>Trucks History</h2>
+          <p>The system has an option of writing off any burst tyres but never losing its history. You are able to generate an  
+			accurate report on all burst tyres at any given time. Additionally, all tyres purchased within a given duration is 
+			shown giving all the details of the wheel (serial number, make, truck fitted, etc)</p>
+          <p><a class="btn" href="#">View details »</a></p>
+        </div>
+        
         <div class="span4">
           <h2>Report continuity</h2>
           <p>Tyre tracking has a continuity in reporting. The summaries and histories of the tyres as from the date of purchase, 
@@ -114,7 +122,8 @@
           <p><a class="btn" href="#">View details »</a></p>
         </div>
       </div>
-
+	  
+		{% endblock %} 
       <hr>
 
       <footer>
@@ -140,7 +149,7 @@
     <script src="/static/scripts/bootstrap-carousel.js"></script>
     <script src="/static/scripts/bootstrap-typeahead.js"></script>
 	
-	<script src="/static/scripts/jquery.js"></script>
+	<script src="/static/scripts/jquery.js"></script>  
 	<script src="/static/styles/bootstrap/js/bootstrap.min.js"></script>
       <script>
         $(document).ready(function(){

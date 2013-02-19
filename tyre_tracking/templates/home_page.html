@@ -1,0 +1,66 @@
+{% extends "base.html" %} 
+			  {% block nav_bar %}
+              <li><a href="/transfer/">Transfers</a></li>
+              <li><a href="/history/">History</a></li>
+			  <li><a href="/report/">Reports</a></li> 
+			  {% endblock %}
+  
+					{% block account_options %}
+                  <li><a href="/accounts/profile/edit/">Preferrences</a></li>				  
+                  <li><a href="/accounts/password/reset/">Reset password</a></li>
+				  <li class="divider"></li>
+				  <li><a href="/accounts/logout/">Logout</a></li>
+
+				    {% endblock %} 
+
+			{% block identify_user %}			
+			{% if user %} 
+				<h3 class="navbar pull-right"> <small> {{ user.get_full_name }} </small> [ <a href="/accounts/logout/">Logout</a> ] </h3>
+			{% endif %}
+			
+			{% endblock %} 
+
+		{% block main_content %}
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Dashboard</h1>
+        <p>This is the landing page for someone first logged on. Use the links given below to access the rest of the system. You can log out with 
+		the link given above when you are done. </p>
+        <p><a href="#" class="btn btn-primary btn-large">Learn more »</a></p>
+      </div>
+		
+        <ul class="thumbnails">
+		<li class="span3">
+			<div class="thumbnail">
+			<a href="#">
+				<img src="http://placehold.it/300x200" alt="" />
+			</a>
+			<h4>Tyre transfers (summary)</h4>
+			</div><!-- .thumbnail -->
+		</li><!-- .span3 -->
+		<li class="span3">
+			<div class="thumbnail">
+			<a href="#">
+				<img src="http://placehold.it/300x200" alt="" />
+			</a>
+			<h4>Trucks history</h4>
+			</div><!-- .thumbnail -->
+		</li><!-- .span3 -->
+		<li class="span3">
+			<div class="thumbnail">
+			<a href="#">
+				<img src="http://placehold.it/300x200" alt="" />
+			</a>
+			<h4>View Reports</h4>
+			</div><!-- .thumbnail -->
+		</li><!-- .span3 -->
+		<li class="span3">
+			<div class="thumbnail">
+			<a href="#">
+				<img src="http://placehold.it/300x200" alt="" />
+			</a>
+			<h4>Go to <a href="/admin/"> Admin </a></h4>
+			</div><!-- .thumbnail -->
+		</li><!-- .span3 -->
+	  
+		{% endblock %} 

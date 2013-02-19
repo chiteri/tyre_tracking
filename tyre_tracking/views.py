@@ -1,10 +1,21 @@
 #from django.http import Http404, HttpResponse 
 #from django.template import Template, Context
-from django.views.generic.simple import direct_to_template
-#import datetime 
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response 
+from django.contrib.auth.decorators import login_required 
+from django.core.context_processors import csrf
 
-def home(request): 
-    return direct_to_template(request, 'base.html') 
+def index(request): 
+    if request.user.is_authenticated(): 
+        return HttpResponseRedirect('/accounts/profile/')  
+	
+    c = {}
+    c.update(csrf(request))	
+    return render_to_response('base.html', c) #{'user':request.user, 'c':c }) 
+	
+@login_required # Decorator to denote that only authenticated / authorised users can access this view  
+def home(request):
+    return render_to_response('home_page.html', {'user':request.user } ) 
 
 #def hello(request): 
 #    return HttpResponse("Hello World!")

@@ -7,7 +7,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'tyre_tracking.views.home', name='home'),
+    url(r'^$', 'tyre_tracking.views.index', name='index'), 
+    url(r'^accounts/profile/$', 'tyre_tracking.views.home', name='home'), 	
     # url(r'^tyre_tracking/', include('tyre_tracking.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -15,4 +16,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)), 
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', name='logout'),
 )

@@ -2,7 +2,7 @@
 <!-- saved from url=(0054)http://twitter.github.com/bootstrap/examples/hero.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Home | My Bootstrap site, from Twitter</title>
+    <title> Tyre tracking :: {% block page_title %} Welcome! {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -29,7 +29,7 @@
                     <link rel="apple-touch-icon-precomposed" href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="http://twitter.github.com/bootstrap/assets/ico/favicon.png">
   <script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/menu_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/change_sink.js"></script><meta name="document_iterator.js"><meta name="find_proxy.js"><meta name="get_html_text.js"><meta name="global_constants.js"><meta name="number_injection_builder.js"><meta name="name_injection_builder.js"><meta name="menu_injection_builder.js"><meta name="string_finder.js"><meta name="change_sink.js"></head>
-   {% block meta_head %} {% endblock %}
+   {% block extra_headers %} {% endblock %}
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -40,24 +40,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Tyre tracking</a>
+          <a class="brand" href="/">Tyre tracking</a>
           <div class="nav-collapse collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li> 
+            <ul class="nav"> 
 			  {% block nav_bar %}
-              <!-- <li><a href="/transfer/">Transfers</a></li>
-              <li><a href="/history/">History</a></li>
-			  <li><a href="/report/">Reports</a></li> --> 
+              <li class="active"><a href="/">Home</a></li> 
+			  
+
 			  {% endblock %}
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+                <a href="/account/" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
                 <ul class="dropdown-menu">   
 					{% block account_options %}
-                  <!-- <li><a href="/accounts/profile/edit/">Preferrences</a></li>				  
-                  <li><a href="/accounts/password/reset/">Reset password</a></li>
-				  <li><a href="/accounts/logout/">Logout</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li> --> 
                   <li><a href="/accounts/register/">Sign Up</a></li>
                   <li><a href="/accounts/password/request/">Forgot password?</a></li>
 				    {% endblock %} 
@@ -131,11 +125,12 @@
       </footer>
 
     </div> <!-- /container -->
-
+	
+	{% block extra_scripts %} 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/static/scripts/jquery.min.js"></script>
+    <script src="/static/scripts/jquery.js"></script>
     <script src="/static/scripts/bootstrap-transition.js"></script>
     <script src="/static/scripts/bootstrap-alert.js"></script>
     <script src="/static/scripts/bootstrap-modal.js"></script>
@@ -156,5 +151,6 @@
           $('.carousel').carousel();
         }); // end document.ready
       </script>
+	{% endblock %}
 
 </body><span id="skype_highlighting_settings" display="none" autoextractnumbers="0"></span><object id="skype_plugin_object" location.href="#" location.hostname="twitter.github.com" style="position: absolute; visibility: hidden; left: -100px; top: -100px;" width="0" height="0" type="application/x-vnd.skype.click2call.chrome.5.7.0"></object></html>

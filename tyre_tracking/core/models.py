@@ -43,7 +43,7 @@ class Tyre(models.Model):
     supplier = models.CharField(max_length=30, help_text="Vendor or place of purchase")
     vehicle_fitted = models.ForeignKey(Vehicle, help_text="Registration of truck fitted", null=True)
     position_fitted = models.CharField(max_length = 4, choices = TYRE_POSITION_CHOICES, null=True)
-    expected_life = models.IntegerField(help_text = "Duration in months for how long the tyre should last.")
+    expected_life = models.IntegerField(help_text = "Duration in mileage (Kms) for how long the tyre should last.")
     status = models.CharField(max_length=1, choices=TYRE_STATUS_CHOICES)
     
     def __unicode__(self): 

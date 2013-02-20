@@ -1,0 +1,81 @@
+{% extends "home_page.html" %} 
+				{% block page_title %} Transfers home  {% endblock %}
+			  {% block nav_bar %}
+			  <li><a href="/">Home</a></li>
+              <li class="active"><a href="/transfer/">Transfers</a></li>
+              <li><a href="/history/">History</a></li>
+			  <li><a href="/report/">Reports</a></li> 
+			  {% endblock %}
+  
+		{% block main_content %}
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="page-header">
+        <h1>Transfers</h1>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span3">
+          <!-- <h2>Most recent operations</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details »</a></p> --> 
+		  
+		  <img src="/static/images/440x200.gif" alt="placeholder" class="pull-right thumbnail" />
+		  <p>tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem .... </p>
+        </div> 
+		
+		<div class="span9"> 
+		   <h2> Operations </h2>
+		   <ul class="nav nav-tabs"> 
+			<li class="active"> <a href="#most-recent" data-toggle="tab"> Most Recent </a></li>
+			<li> <a href="#effect-transfer" data-toggle="tab"> Effect transfer </a></li>
+			<!-- <li> <a href="#transfer-history" data-toggle="tab"> History </a></li> --> 
+		   </ul> 
+		   
+		   <div class="tab-content"> 
+			<span class="tab-pane active" id="most-recent"> 
+			  <h4> Transfer Summary </h4> 
+			  {% if transfers %} 
+			  <table class="table table-striped table-bordered"> 
+				<thead> 			 
+					<tr> 
+						<th> DATE </th> <th> TYRE </th> <th> VEHICLE FROM </th> <th> VEHICLE TO </th> <th> NEW POSITION </th> <th> TYRE STATE </th>
+					</tr> 
+				</thead>
+				<tbody> 
+					{% for transfer in transfers %} 
+					<tr> 
+						<td> {{ transfer.transfer_date|date:"F j, Y" }} </td> <td> {{ transfer.tyre }} </td> <td> {{ transfer.vehicle_from }} </td> 
+						<td> {{ transfer.vehicle_to }} </td> <td> {{ transfer.new_position }} </td> <td> {{ transfer.tyre_state }} </td> 
+					</tr> 
+					{% endfor %} 
+				</tbody>
+			  </table> 
+			  {% endif %}
+			  </span>
+			  
+			  <div class="tab-pane" id="effect-transfer">
+				  <h4>Transfer form</h4> <hr /> 
+						{% for dict in formset.errors %} 
+							<span class="error"> {% for error in dict.values %} {{ error }} {% endfor %} </span>
+						{% endfor%} 
+						<form action="" method="POST" name="transfer_form"> {% csrf_token %}
+						{{ formset.management_form }}
+							{% for form in formset %}
+							<table> {{ form.as_table }} </table>
+						{% endfor %} 
+						<br /> <button type="submit" class="btn"> :: Submit :: </button>
+						</form>  
+		      </div> 
+				  
+			<!--  <div class="tab-pane" id="transfer-history">
+				  <h4>Transfer History</h4>
+				   <img src="/static/images/440x200.gif" alt="placeholder" class="pull-right thumbnail" />
+				  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa .... </p>
+				  </div> --> 
+		  </div> <!-- End tab contents --> 
+		  
+        </div>
+      </div>
+	  
+		{% endblock %} 

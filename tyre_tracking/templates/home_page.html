@@ -1,5 +1,7 @@
 {% extends "base.html" %} 
-			  {% block nav_bar %}
+			{% block page_title %} Home page  {% endblock %}
+			  {% block nav_bar %} 
+			  <li class="active"><a href="/">Home</a></li>
               <li><a href="/transfer/">Transfers</a></li>
               <li><a href="/history/">History</a></li>
 			  <li><a href="/report/">Reports</a></li> 
@@ -15,7 +17,7 @@
 
 			{% block identify_user %}			
 			{% if user %} 
-				<h3 class="navbar pull-right"> <small> {{ user.get_full_name }} </small> [ <a href="/accounts/logout/">Logout</a> ] </h3>
+				<h4 class="navbar pull-right"> <small> {{ user.get_full_name }} </small> <a href="/accounts/logout/"> [ Logout ] </a> </h4>
 			{% endif %}
 			
 			{% endblock %} 
@@ -24,7 +26,7 @@
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
         <h1>Dashboard</h1>
-        <p>This is the landing page for someone first logged on. Use the links given below to access the rest of the system. You can log out with 
+        <p>This is the landing page for someone logged on for the first time. Use the links given below to access the rest of the system. You can log out with 
 		the link given above when you are done. </p>
         <p><a href="#" class="btn btn-primary btn-large">Learn more »</a></p>
       </div>
@@ -33,15 +35,15 @@
 		<li class="span3">
 			<div class="thumbnail">
 			<a href="#">
-				<img src="http://placehold.it/300x200" alt="" />
+				<img src="/static/images/300x200.gif" alt="" />
 			</a>
-			<h4>Tyre transfers (summary)</h4>
+			<h4><a href="/transfer/">Transfers & summary</a></h4>
 			</div><!-- .thumbnail -->
 		</li><!-- .span3 -->
 		<li class="span3">
 			<div class="thumbnail">
 			<a href="#">
-				<img src="http://placehold.it/300x200" alt="" />
+				<img src="/static/images/300x200.gif" alt="" />
 			</a>
 			<h4>Trucks history</h4>
 			</div><!-- .thumbnail -->
@@ -49,7 +51,7 @@
 		<li class="span3">
 			<div class="thumbnail">
 			<a href="#">
-				<img src="http://placehold.it/300x200" alt="" />
+				<img src="/static/images/300x200.gif" alt="" />
 			</a>
 			<h4>View Reports</h4>
 			</div><!-- .thumbnail -->
@@ -57,7 +59,7 @@
 		<li class="span3">
 			<div class="thumbnail">
 			<a href="#">
-				<img src="http://placehold.it/300x200" alt="" />
+				<img src="/static/images/300x200.gif" alt="" />
 			</a>
 			<h4>Go to <a href="/admin/"> Admin </a></h4>
 			</div><!-- .thumbnail -->

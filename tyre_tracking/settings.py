@@ -122,7 +122,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'tyre_tracking.core',
+    'tyre_tracking.core', 
+    'tyre_tracking.transfer',
 )
 
 # A sample logging configuration. The only tangible logging

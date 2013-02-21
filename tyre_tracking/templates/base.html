@@ -14,6 +14,10 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
+	  
+	  .errorlist { 
+	  background: yellow; 
+      }
     </style>
     <link href="/static/styles/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
@@ -45,7 +49,6 @@
             <ul class="nav"> 
 			  {% block nav_bar %}
               <li class="active"><a href="/">Home</a></li> 
-			  
 
 			  {% endblock %}
               <li class="dropdown">
@@ -53,7 +56,7 @@
                 <ul class="dropdown-menu">   
 					{% block account_options %}
                   <li><a href="/accounts/register/">Sign Up</a></li>
-                  <li><a href="/accounts/password/request/">Forgot password?</a></li>
+                  <li><a href="/accounts/password/request/">Forgot password?</a></li> 
 				    {% endblock %} 
                 </ul>
               </li>
@@ -126,11 +129,10 @@
 
     </div> <!-- /container -->
 	
-	{% block extra_scripts %} 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/static/scripts/jquery.js"></script>
+    <script src="/static/scripts/jquery.min.js"></script>
     <script src="/static/scripts/bootstrap-transition.js"></script>
     <script src="/static/scripts/bootstrap-alert.js"></script>
     <script src="/static/scripts/bootstrap-modal.js"></script>
@@ -144,13 +146,16 @@
     <script src="/static/scripts/bootstrap-carousel.js"></script>
     <script src="/static/scripts/bootstrap-typeahead.js"></script>
 	
-	<script src="/static/scripts/jquery.js"></script>  
+	<script src="/static/scripts/jquery.min.js"></script> 
 	<script src="/static/styles/bootstrap/js/bootstrap.min.js"></script>
       <script>
         $(document).ready(function(){
           $('.carousel').carousel();
         }); // end document.ready
       </script>
+	
+	{% block extra_scripts %}  
+	
 	{% endblock %}
 
 </body><span id="skype_highlighting_settings" display="none" autoextractnumbers="0"></span><object id="skype_plugin_object" location.href="#" location.hostname="twitter.github.com" style="position: absolute; visibility: hidden; left: -100px; top: -100px;" width="0" height="0" type="application/x-vnd.skype.click2call.chrome.5.7.0"></object></html>

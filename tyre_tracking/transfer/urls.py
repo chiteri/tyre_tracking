@@ -7,6 +7,6 @@ from tyre_tracking.core.models import Transfer
 
 urlpatterns = patterns('',
     url(r'^$', 'tyre_tracking.transfer.views.home', name='home'), 	
-    #url(r'^success/$', 'tyre_tracking.transfer.views.success', name='success'), 	
+    url(r'^success/$', 'tyre_tracking.transfer.views.success', name='success'), 	
 )
 

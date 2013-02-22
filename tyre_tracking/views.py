@@ -1,5 +1,3 @@
-#from django.http import Http404, HttpResponse 
-#from django.template import Template, Context
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response 
 from django.contrib.auth.decorators import login_required 

@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response 
 from django.contrib.auth.decorators import login_required 
 from django.forms.models import modelformset_factory
-from tyre_tracking.core.models import Transfer
+from tyre_tracking.transfer.models import Transfer
 from django.core.context_processors import csrf 
 from django.http import HttpResponseRedirect  
 # from django.forms import Textarea

@@ -43,21 +43,11 @@ class Tyre(models.Model):
     supplier = models.CharField(max_length=30, help_text="Vendor or place of purchase")
     vehicle_fitted = models.ForeignKey(Vehicle, help_text="Registration of truck fitted", null=True)
     position_fitted = models.CharField(max_length = 4, choices = TYRE_POSITION_CHOICES, null=True)
-    expected_life = models.IntegerField(help_text = "Duration in mileage (Kms) for how long the tyre should last.")
+    expected_life = models.IntegerField(help_text = "Duration in mileage (Kms) for how long the tyre should last when new.") 
+    retread_life = models.IntegerField(help_text = "Duration in mileage (Kms) for how long the tyre should last after retread.", null=True, blank=True)
     status = models.CharField(max_length=1, choices=TYRE_STATUS_CHOICES)
     
     def __unicode__(self): 
         return u'Tyre number %s [ %s ]'%(self.serial_number, self.make)
- 
-class Transfer(models.Model): 
-    # agent = models.ForeignKey(User, help_text = "The person who effected the transfer")
-    transfer_date = models.DateField(help_text="Date transfer was effected") 
-    tyre =  models.ForeignKey(Tyre, help_text="Tyre transferred") 
-    vehicle_from = models.ForeignKey("Vehicle", related_name="transfer_from", null=True, blank=True) 
-    vehicle_to = models.ForeignKey("Vehicle", related_name="transfer_to", null=True, blank=True) 
-    new_position = models.CharField(max_length=4, choices = Tyre.TYRE_POSITION_CHOICES, null=True, blank=True) 
-    tyre_state =  models.CharField(max_length=1, choices = Tyre.TYRE_STATUS_CHOICES)
 
-    def __unicode__(self): 
-        return u"%s transfer [%s]"%(self.transfer_date, self.vehicle_from)
    

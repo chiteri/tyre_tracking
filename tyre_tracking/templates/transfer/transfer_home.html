@@ -49,14 +49,14 @@
 			  <table class="table table-striped table-bordered"> 
 				<thead> 			 
 					<tr> 
-						<th> DATE </th> <th> TYRE </th> <th> VEHICLE FROM </th> <th> VEHICLE TO </th> <th> NEW POSITION </th> <th> TYRE STATE </th>
+						<th> DATE </th> <th> TYRE </th> <th> TRANSFER BY </th> <th> VEHICLE FROM </th> <th> VEHICLE TO </th> <th> NEW POSITION </th> <th> TYRE STATE </th>
 					</tr> 
 				</thead>
 				<tbody> 
 					{% for transfer in transfers %} 
 					<tr> 
-						<td> {{ transfer.transfer_date|date:"F j, Y" }} </td> <td> {{ transfer.tyre }} </td> <td> {{ transfer.vehicle_from }} </td> 
-						<td> {{ transfer.vehicle_to }} </td> <td> {{ transfer.new_position }} </td> <td> {{ transfer.tyre_state }} </td> 
+						<td> {{ transfer.transfer_date|date:"F j, Y" }} </td> <td> {{ transfer.tyre }} </td> <td> {{ transfer.agent.get_full_name }} </td> 
+						<td> {{ transfer.vehicle_from }} </td> <td> {{ transfer.vehicle_to }} </td> <td> {{ transfer.new_position }} </td> <td> {{ transfer.tyre_state }} </td> 
 					</tr> 
 					{% endfor %} 
 				</tbody>

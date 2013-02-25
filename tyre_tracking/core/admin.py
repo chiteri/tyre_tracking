@@ -8,7 +8,7 @@ class VehicleAdmin(admin.ModelAdmin):
     search_fields = ('registration_number',)
 
 class TyreAdmin(admin.ModelAdmin): 
-    list_display = ('serial_number', 'make', 'purchase_date', 'supplier', 'original_cost', 'expected_life', 'status')
+    list_display = ('serial_number', 'make', 'vehicle_fitted', 'position_fitted', 'purchase_date', 'supplier', 'original_cost', 'expected_life', 'retread_life', 'status')
     list_filter = ('make', 'supplier', 'status',)
     ordering = ('serial_number',) 
     search_fields = ('serial_number',)

@@ -22,12 +22,12 @@ def home(request):
         if formset.is_valid():
             formset.save() 
 			
-            # Move the tyre to another vehicle if possible and change its position and status 
+            # Move the tyre to another vehicle if possible and change its position and status, unless it has bee written off  
 			# try: 
             changed_tyre = Tyre.objects.get(serial_number=request.POST['form-0-tyre'] ) 
 			
-            changed_tyre.vehicle_fitted=Vehicle.objects.get(registration_number=request.POST['form-0-vehicle_to'])
-            changed_tyre.position_fitted=request.POST['form-0-new_position'] 
+            changed_tyre.vehicle_fitted = Vehicle.objects.get(registration_number=request.POST['form-0-vehicle_to']) if request.POST['form-0-vehicle_to'] else None
+            changed_tyre.position_fitted=request.POST['form-0-new_position'] if request.POST['form-0-new_position'] else None 
             changed_tyre.status=request.POST['form-0-tyre_state']  
             changed_tyre.save() 
 			

@@ -1,4 +1,5 @@
 from django import forms 
+from tyre_tracking.core.models import Tyre #, Vehicle 
 
 class TransferForm(forms.ModelForm):
     # Add some custom validations to the form 
@@ -21,5 +22,9 @@ class TransferForm(forms.ModelForm):
             raise forms.ValidationError('A tryre from the repair / retred needs to have a new position and vehicle') 
         elif data["vehicle_to"] and not data["new_position"]:			
             raise forms.ValidationError('You should specify a new tyre position on %s.'%data["vehicle_to"]) 
+			
+        # A tyre that has been written off cannot be move to another vehicle, just from 
+        if modified_tyre.status == Tyre.TYRE_STATUS_CHOICES[2][0] : 
+            raise forms.ValidationError('Tyre %s is written off and cannot be put back on %s.'%(modified_tyre.serial_number, data["vehicle_to"]))
 			
         return data 

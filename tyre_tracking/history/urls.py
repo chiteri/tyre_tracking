@@ -8,7 +8,7 @@ from tyre_tracking.core.models import Vehicle, Tyre
 
 urlpatterns = patterns('',
     url(r'^$', 'tyre_tracking.history.views.home', name='home'), 	
-    url(r'^vehicle/$', 'tyre_tracking.transfer.views.success', name='success'), 	
-    url(r'^tyre/$', 'tyre_tracking.transfer.views.success', name='success'), 	
+    url(r'^vehicle/(?P<registration_no>[^/]+)/$', 'tyre_tracking.history.views.vehicle_history', name='vehicle_history'), 	
+    url(r'^tyre/(?P<serial_no>[\w]+)/$', 'tyre_tracking.history.views.tyre_history', name='tyre_history'), 	
 )
 

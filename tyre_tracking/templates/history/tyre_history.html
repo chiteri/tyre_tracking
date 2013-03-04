@@ -1,0 +1,45 @@
+{% extends "history/history_home.html" %} 
+				{% block page_title %} Vehicle {{vehicle.registration_number}} history  {% endblock %} 
+  
+		{% block main_content %}
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="page-header">
+        <h3>Transfers details</h3>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span3">		  
+		  <img src="/static/images/440x200.gif" alt="placeholder" class="pull-right thumbnail" />
+		  <p>tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem .... </p>
+        </div> 
+		
+		<div class="span9"> 
+			<h4 class="alert alert-success"> Tyre {{tyre.serial_number}} transfers details. </h4> 
+			
+			{% if transfers %} 
+			  <table class="table table-striped table-bordered"> 
+				<thead> 			 
+					<tr> 
+						<th> DATE </th> <th> TYRE </th> <th> TRANSFER BY </th> <th> VEHICLE FROM </th> <th> VEHICLE TO </th> <th> NEW POSITION </th> <th> TYRE STATE </th>
+					</tr> 
+				</thead>
+				<tbody> 
+					{% for transfer in transfers %} 
+					<tr> 
+						<td> {{ transfer.transfer_date|date:"F j, Y" }} </td> <td> {{ transfer.tyre }} </td> <td> {{ transfer.agent.get_full_name }} </td> 
+						<td> {{ transfer.vehicle_from }} </td> <td> <a href="/history/vehicle/{{transfer.vehicle_to.registration_number}}/">{{ transfer.vehicle_to }}</a> </td> 
+						<td> {{ transfer.new_position }} </td> <td> {{ transfer.tyre_state }} </td> 
+					</tr> 
+					{% endfor %} 
+				</tbody>
+			  </table> 
+			  {% else %} 
+			  <div class="alert alert-info" > <p> There are no transfers effected for tyre {{tyre.serial_number}} yet! </p> </div>
+			  {% endif %} 
+		  
+        </div>
+      </div>
+	  
+		{% endblock %} 
+		

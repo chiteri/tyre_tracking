@@ -1,0 +1,81 @@
+{% extends "home_page.html" %} 
+				{% block page_title %} Activity History {% endblock %} 
+				
+			  {% block nav_bar %}
+			  <li><a href="/">Home</a></li>
+              <li><a href="/transfer/">Transfers</a></li>
+              <li class="active"><a href="/history/">History</a></li>
+			  <li><a href="/report/">Reports</a></li> 
+			  {% endblock %}
+  
+		{% block main_content %}
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="page-header">
+        <h1> Activities history </h1>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span3">		  
+		  <img src="/static/images/440x200.gif" alt="placeholder" class="pull-right thumbnail" />
+		  <p>tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem .... </p>
+        </div> 
+		
+		<div class="span9"> 
+		   <ul class="nav nav-tabs"> 
+		    <li class="active"> <a href="#vehicles" data-toggle="tab"> Vehicles </a></li>
+			<li> <a href="#tyres" data-toggle="tab"> Tyres </a></li>
+						<!-- <li> <a href="#transfer-history" data-toggle="tab"> History </a></li> --> 
+		   </ul> 
+		   
+		   <div class="tab-content"> 		  
+			  <div class="tab-pane active" id="vehicles">
+				  <h4>Trucks and trailers</h4> 						
+					{% if vehicles %}
+					<table class="table table-striped table-bordered">  
+				        <thead> 			 
+					    <tr> 
+						<th> REGISTRATION NUMBER </th> <th> VEHICLE TYPE </th> <th> TRUCK </th> 
+					    </tr> 
+				        </thead>
+				        <tbody>
+					{% for vehicle in vehicles %} 
+					     <tr><td><a href="vehicle/{{vehicle.registration_number}}/">{{ vehicle.registration_number }}</a></td>
+					    <td>{{ vehicle.vehicle_type }}</td> <td>{{ vehicle.truck }}</td></tr>  
+                                        {% endfor %} 
+					</tbody>  
+					</table> 
+					{% else %} 
+					    <div class="alert alert-info"> <p> There are no vehicles to show. </p> <div> 
+					{% endif %} 
+		      </div> 
+			  
+			  <span class="tab-pane" id="tyres"> 
+			  <h4> List of tyres </h4> 
+			  {% if tyres %} 
+			  <table class="table table-striped table-bordered"> 
+				<thead> 			 
+					<tr> 
+						<th> SERIAL </th> <th> MAKE </th> <th> DATE PURCHASED</th> <th> COST </th> <th> VEHICLE FITTED </th> <th> POSITION </th> <th> STATUS </th>
+					</tr> 
+				</thead>
+				<tbody> 
+					{% for tyre in tyres %} 
+					<tr> 
+						<td> <a href="tyre/{{tyre.serial_number}}/">{{ tyre.serial_number }}</a></td> <td> {{ tyre.make }} </td> <td> {{ tyre.purchase_date|date:"F j, Y" }} </td> 
+						<td> {{ tyre.original_cost }} </td> <td> {{ tyre.vehicle_fitted }} </td> <td> {{ tyre.position_fitted }} </td> <td> {{ tyre.status }} </td> 
+					</tr> 
+					{% endfor %} 
+				</tbody>
+			  </table> 
+			  {% else %} 
+			  <div class="alert alert-info" > <p> There are no transfers effected yet! </p> </div>
+			  {% endif %}
+			  </span>
+				  
+		  </div> <!-- End tab contents --> 
+		  
+        </div>
+      </div>
+	  
+		{% endblock %} 

@@ -1,4 +1,5 @@
 {% extends "home_page.html" %} 
+{% load tyre_tracking_extras %} 
 				{% block page_title %} Transfers home  {% endblock %} 
 				
 			  {% block nav_bar %}
@@ -56,7 +57,7 @@
 					{% for transfer in transfers %} 
 					<tr> 
 						<td> {{ transfer.transfer_date|date:"F j, Y" }} </td> <td> {{ transfer.tyre }} </td> <td> {{ transfer.agent.get_full_name }} </td> 
-						<td> {{ transfer.vehicle_from }} </td> <td> {{ transfer.vehicle_to }} </td> <td> {{ transfer.new_position }} </td> <td> {{ transfer.tyre_state }} </td> 
+						<td> {{ transfer.vehicle_from }} </td> <td> {{ transfer.vehicle_to }} </td> <td> {{ transfer.new_position|tyre_position }} </td> <td> {{ transfer.tyre_state|tyre_status }} </td> 
 					</tr> 
 					{% endfor %} 
 				</tbody>

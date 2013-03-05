@@ -1,4 +1,5 @@
 {% extends "history/history_home.html" %} 
+{% load tyre_tracking_extras %} 
 				{% block page_title %} Vehicle {{vehicle.registration_number}} history  {% endblock %} 
   
 		{% block main_content %}
@@ -15,7 +16,7 @@
         </div> 
 		
 		<div class="span9"> 
-			<h4 class="alert alert-success"> Vehicle {{vehicle.registration_number}}({{vehicle.vehicle_type}}) details. </h4> 
+			<h4 class="alert alert-success"> Vehicle {{vehicle.registration_number}} ({{vehicle.vehicle_type|vehicle_type}}) details. </h4> 
 			
 			{% if transfers %} 
 			  <table class="table table-striped table-bordered"> 
@@ -29,7 +30,7 @@
 					<tr> 
 						<td> {{ transfer.transfer_date|date:"F j, Y" }} </td> <td> <a href="/history/tyre/{{transfer.tyre.serial_number}}/">{{ transfer.tyre }}</a> </td> 
 						<td> {{ transfer.agent.get_full_name }} </td> <td> {{ transfer.vehicle_from }} </td> <td> {{ transfer.vehicle_to }} </td>                                                 
-						<td> {{ transfer.new_position }} </td> <td> {{ transfer.tyre_state }} </td> 
+						<td> {{ transfer.new_position|tyre_position }} </td> <td> {{ transfer.tyre_state|tyre_status }} </td> 
 					</tr> 
 					{% endfor %} 
 				</tbody>

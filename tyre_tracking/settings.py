@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'tyre_tracking.core', 
     'tyre_tracking.transfer',
+    'tyre_tracking.core.templatetags', 
 )
 
 # A sample logging configuration. The only tangible logging

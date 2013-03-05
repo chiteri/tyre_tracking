@@ -1,4 +1,5 @@
 {% extends "home_page.html" %} 
+{% load tyre_tracking_extras %}
 				{% block page_title %} Activity History {% endblock %} 
 				
 			  {% block nav_bar %}
@@ -41,7 +42,7 @@
 				        <tbody>
 					{% for vehicle in vehicles %} 
 					     <tr><td><a href="vehicle/{{vehicle.registration_number}}/">{{ vehicle.registration_number }}</a></td>
-					    <td>{{ vehicle.vehicle_type }}</td> <td>{{ vehicle.truck }}</td></tr>  
+					    <td>{{ vehicle.vehicle_type|vehicle_type }}</td> <td>{{ vehicle.truck }}</td></tr>  
                                         {% endfor %} 
 					</tbody>  
 					</table> 
@@ -62,8 +63,8 @@
 				<tbody> 
 					{% for tyre in tyres %} 
 					<tr> 
-						<td> <a href="tyre/{{tyre.serial_number}}/">{{ tyre.serial_number }}</a></td> <td> {{ tyre.make }} </td> <td> {{ tyre.purchase_date|date:"F j, Y" }} </td> 
-						<td> {{ tyre.original_cost }} </td> <td> {{ tyre.vehicle_fitted }} </td> <td> {{ tyre.position_fitted }} </td> <td> {{ tyre.status }} </td> 
+						<td> <a href="tyre/{{tyre.serial_number}}/">{{ tyre.serial_number }}</a></td> <td> {{ tyre.make|tyre_manufacturer }} </td> <td> {{ tyre.purchase_date|date:"F j, Y" }} </td> 
+						<td> {{ tyre.original_cost }} </td> <td> {{ tyre.vehicle_fitted }} </td> <td> {{ tyre.position_fitted }} </td> <td> {{ tyre.status|tyre_status }} </td> 
 					</tr> 
 					{% endfor %} 
 				</tbody>

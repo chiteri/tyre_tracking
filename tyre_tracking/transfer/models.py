@@ -15,4 +15,4 @@ class Transfer(models.Model):
     tyre_state =  models.CharField(max_length=1, choices = Tyre.TYRE_STATUS_CHOICES)
 
     def __unicode__(self): 
-        return u"%s transfer [%s]"%(self.transfer_date, self.vehicle_from)
+        return u"%s transfer "%(self.transfer_date)
